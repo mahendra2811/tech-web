@@ -87,3 +87,11 @@ Blog-related endpoints.
 **Planned Endpoints:**
 - `/blog/posts`: Get blog posts
 - `/blog/post`: Create, update, or delete blog posts
+
+
+## Recent Changes (2025-06-10)
+
+### Added
+
+- `src/app/api/newsletter/route.ts`
+

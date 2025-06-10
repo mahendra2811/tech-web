@@ -99,3 +99,13 @@ The following feature components are planned to be added:
 - VideoPlayer
 - CodeSnippet
 - PricingTable
+
+## Recent Changes (2025-06-10)
+
+### Added
+
+- `src/components/features/ContactForm.tsx`
+- `src/components/features/Hero.tsx`
+- `src/components/features/ServiceCard.tsx`
+- `src/components/features/ServicesSection.tsx`
+

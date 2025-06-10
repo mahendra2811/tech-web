@@ -166,3 +166,38 @@ This project is configured for easy deployment to Vercel. Simply connect your Gi
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Recent Changes (2025-06-10)
+
+### Added
+
+- `components.json`
+
+### Modified
+
+- `.gitignore`
+- `package-lock.json`
+- `package.json`
+

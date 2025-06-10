@@ -71,3 +71,12 @@ The following layout components are planned to be added:
 - Section
 - PageHeader
 - LayoutSwitcher (for different layout modes)
+
+## Recent Changes (2025-06-10)
+
+### Added
+
+- `src/components/layout/Container.tsx`
+- `src/components/layout/Footer.tsx`
+- `src/components/layout/Header.tsx`
+

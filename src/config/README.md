@@ -68,3 +68,10 @@ Feature flags and configuration.
 **Planned Configuration:**
 - `featureFlags`: Object mapping feature names to boolean flags
 - `featureConfig`: Configuration for specific features
+
+## Recent Changes (2025-06-10)
+
+### Added
+
+- `src/config/site.ts`
+

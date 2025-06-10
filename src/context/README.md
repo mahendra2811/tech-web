@@ -76,3 +76,10 @@ The following contexts are planned to be added:
 - AuthContext: For user authentication state
 - LayoutContext: For managing layout preferences
 - NotificationContext: For displaying toast notifications
+
+## Recent Changes (2025-06-10)
+
+### Added
+
+- `src/context/ThemeContext.tsx`
+

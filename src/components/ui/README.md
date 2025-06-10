@@ -52,3 +52,10 @@ The following UI components are planned to be added:
 - Toast
 - Spinner
 - ProgressBar
+
+## Recent Changes (2025-06-10)
+
+### Added
+
+- `src/components/ui/ThemeToggle.tsx`
+

@@ -172,3 +172,12 @@ jobs:
           git diff --staged --quiet || git commit -m "docs: update README files [skip ci]"
           git push
 ```
+
+
+## Recent Changes (2025-06-10)
+
+### Added
+
+- `.github/workflows/ci.yml`
+- `.github/workflows/update-readmes.yml`
+

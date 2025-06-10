@@ -91,9 +91,11 @@ When modifying this script, consider:
 
 
 
+
 ## Recent Changes (2025-06-10)
 
 ### Added
 
-- `src/lib/utils.ts`
+- `.github/scripts/package.json`
+- `.github/scripts/update-readmes.js`
 

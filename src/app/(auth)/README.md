@@ -79,3 +79,13 @@ Page for email verification.
 - Token validation
 - Success/error messages
 - Resend verification option
+
+
+
+## Recent Changes (2025-06-10)
+
+### Added
+
+- `src/app/(auth)/register/layout.tsx`
+- `src/app/(auth)/register/page.tsx`
+

@@ -91,15 +91,21 @@ function findReadmeFile(directory, maxDepth = 5) {
     return null;
   }
 
+  // Convert to absolute path if it's not already
+  const absoluteDir = path.isAbsolute(directory)
+    ? directory
+    : path.resolve(process.cwd(), '..', '..', directory);
+
   // Check if README.md exists in the current directory
-  const readmePath = path.join(directory, 'README.md');
+  const readmePath = path.join(absoluteDir, 'README.md');
   if (fs.existsSync(readmePath)) {
+    console.log(`Found README.md at absolute path: ${readmePath}`);
     return readmePath;
   }
 
   // If not, check parent directories until we find one or reach the root
-  const parentDir = path.dirname(directory);
-  if (parentDir !== directory) {
+  const parentDir = path.dirname(absoluteDir);
+  if (parentDir !== absoluteDir) {
     // Stop if we've reached the root
     return findReadmeFile(parentDir, maxDepth - 1);
   }
@@ -110,6 +116,8 @@ function findReadmeFile(directory, maxDepth = 5) {
 // Update a README.md file with information about changed files
 function updateReadmeFile(readmePath, changedFiles) {
   try {
+    // readmePath is now already an absolute path from findReadmeFile
+
     // Read the current content of the README.md file
     let content = fs.readFileSync(readmePath, 'utf8');
 
@@ -188,7 +196,10 @@ function updateReadmeFile(readmePath, changedFiles) {
     // Write the updated content back to the README.md file
     fs.writeFileSync(readmePath, content);
 
-    console.log(`Updated ${readmePath}`);
+    // Verify the file was updated
+    const newContent = fs.readFileSync(readmePath, 'utf8');
+    const hasRecentChanges = newContent.includes(`## Recent Changes (${changeDate})`);
+    console.log(`Updated ${readmePath} - Recent Changes section present: ${hasRecentChanges}`);
   } catch (error) {
     console.error(`Error updating ${readmePath}:`, error);
   }

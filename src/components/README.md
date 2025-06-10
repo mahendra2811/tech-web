@@ -44,3 +44,10 @@ Page-specific components that are only used on specific pages:
 4. **State Management**:
    - Use React hooks for local state
    - Consider context for shared state across components
+
+## Recent Changes (2025-06-10)
+
+### Added
+
+- `src/components/ThemeProvider.tsx`
+

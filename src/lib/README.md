@@ -74,3 +74,10 @@ SEO-related utilities.
 3. **Documentation**: Include JSDoc comments for all functions
 4. **Testing**: Write unit tests for utility functions
 5. **Modularity**: Keep functions focused on a single responsibility
+
+## Recent Changes (2025-06-10)
+
+### Added
+
+- `src/lib/utils.ts`
+

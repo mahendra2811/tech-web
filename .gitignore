@@ -44,3 +44,6 @@ next-env.d.ts
 # Previously ignored all README.md files except the main one:
 # **/README.md
 # !README.md
+
+# github folder and all its contents
+.github/
