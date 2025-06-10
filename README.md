@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Advanced Software Development Company Website
+
+A modern, responsive website for a software development company built with Next.js, TypeScript, and Tailwind CSS.
+
+## Features
+
+- Responsive design with mobile-first approach
+- Dark mode support
+- Server-side rendering with Next.js App Router
+- TypeScript for type safety
+- Tailwind CSS for styling
+- Form validation with React Hook Form and Zod
+- Animations with Framer Motion
+- API routes for contact form and newsletter subscription
+- Authentication pages (login/register)
+
+## Tech Stack
+
+- **Framework**: Next.js 13+ (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: ShadCN UI
+- **Animation**: Framer Motion
+- **Form Handling**: React Hook Form with Zod validation
+- **Icons**: Lucide Icons
+- **Email**: Resend
+- **HTTP Client**: Axios
+- **Date Formatting**: date-fns
+
+## Project Structure
+
+```
+/
+├── .github/workflows/    # GitHub Actions workflows
+├── public/               # Static assets
+├── src/
+│   ├── app/              # Next.js App Router pages
+│   │   ├── api/          # API routes
+│   │   ├── (auth)/       # Authentication pages
+│   │   ├── about/        # About page
+│   │   ├── blog/         # Blog pages
+│   │   ├── contact/      # Contact page
+│   │   ├── portfolio/    # Portfolio page
+│   │   ├── services/     # Services page
+│   │   └── page.tsx      # Home page
+│   ├── components/       # React components
+│   │   ├── ui/           # UI components
+│   │   ├── layout/       # Layout components
+│   │   ├── features/     # Feature components
+│   │   └── pages/        # Page-specific components
+│   ├── config/           # Configuration files
+│   ├── context/          # React context providers
+│   ├── hooks/            # Custom React hooks
+│   ├── lib/              # Utility libraries
+│   ├── styles/           # Global styles
+│   ├── types/            # TypeScript type definitions
+│   └── utils/            # Utility functions
+├── .env                  # Environment variables
+├── .env.example          # Example environment variables
+├── next.config.js        # Next.js configuration
+├── package.json          # Project dependencies
+├── tailwind.config.js    # Tailwind CSS configuration
+└── tsconfig.json         # TypeScript configuration
+```
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js 18.x or later
+- npm or yarn
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/software-company-website.git
+   cd software-company-website
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. Install dependencies:
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
 
-## Learn More
+3. Create a `.env` file based on `.env.example`:
+   ```bash
+   cp .env.example .env
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+4. Start the development server:
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Available Scripts
 
-## Deploy on Vercel
+- `npm run dev` - Start the development server
+- `npm run build` - Build the application for production
+- `npm run start` - Start the production server
+- `npm run lint` - Run ESLint to check for code quality issues
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is configured for easy deployment to Vercel. Simply connect your GitHub repository to Vercel and it will automatically deploy your application.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
