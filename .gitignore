@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# README files are now tracked by Git for automated documentation
+# Previously ignored all README.md files except the main one:
+# **/README.md
+# !README.md

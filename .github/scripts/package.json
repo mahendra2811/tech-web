@@ -1,0 +1,8 @@
+{
+  "name": "readme-updater",
+  "version": "1.0.0",
+  "description": "Script to update README files based on changed files",
+  "main": "update-readmes.js",
+  "type": "module",
+  "private": true
+}

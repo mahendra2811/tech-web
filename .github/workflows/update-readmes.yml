@@ -1,0 +1,58 @@
+name: Update README Files
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '**/README.md'
+      - '.github/workflows/update-readmes.yml'
+
+jobs:
+  update-readmes:
+    runs-on: ubuntu-latest
+    # Skip this workflow if the commit message contains [skip ci]
+    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Fetch all history for file changes
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+
+      - name: Install dependencies
+        run: |
+          npm ci
+          cd .github/scripts
+          npm install
+
+      - name: Update README files
+        run: node .github/scripts/update-readmes.js
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          # Temporarily modify .gitignore to allow README.md files to be committed
+          echo "# Temporarily allowing README files for automated updates" > .gitignore.bak
+          grep -v "README.md" .gitignore >> .gitignore.bak
+          mv .gitignore.bak .gitignore
+
+          # Add and commit README files
+          git add "**/README.md"
+
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "docs: update README files [skip ci]"
+            git push
+          fi
+
+          # Restore original .gitignore
+          git checkout -- .gitignore
