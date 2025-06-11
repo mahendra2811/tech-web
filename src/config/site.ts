@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "Advanced Software Development Company",
+  name: "website",
   description: "We build innovative software solutions for businesses of all sizes.",
   url: "https://example.com",
   ogImage: "https://example.com/og-image.jpg",
