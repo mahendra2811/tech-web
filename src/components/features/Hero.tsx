@@ -1,7 +1,6 @@
 'use client';
 
 import { Container } from '@/components/layout/Container';
-import { SectionBackground } from '@/components/ui/SectionBackground';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
@@ -32,8 +31,29 @@ export function Hero() {
 
   return (
     <section className="py-20 md:py-28 relative overflow-hidden">
-      {/* Use the reusable SectionBackground component */}
-      <SectionBackground variant="gradient" />
+      {/* Custom background with overlay */}
+      <div className="absolute inset-0 -z-10">
+        {/* Background image - using the new provided background image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: 'url("/images/hero-background__.png")' }}
+        />
+
+        {/* Overlay gradient for better text contrast and visual effect */}
+        <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-background/40 to-background/20" />
+
+        {/* Animated particles effect */}
+        <motion.div
+          className="absolute inset-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5 }}
+        >
+          {/* Additional animated elements */}
+          <div className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full bg-primary/10 blur-3xl" />
+          <div className="absolute bottom-1/3 left-1/3 w-96 h-96 rounded-full bg-secondary/10 blur-3xl" />
+        </motion.div>
+      </div>
 
       <Container>
         <motion.div
@@ -44,7 +64,7 @@ export function Hero() {
         >
           <div>
             <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-shadow-sm"
               variants={itemVariants}
             >
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/80">
@@ -53,7 +73,7 @@ export function Hero() {
               Software Solutions for Modern Businesses
             </motion.h1>
             <motion.p
-              className="text-xl text-muted-foreground mb-8 max-w-lg"
+              className="text-xl text-muted-foreground mb-8 max-w-lg text-shadow-sm"
               variants={itemVariants}
             >
               We build cutting-edge software that helps businesses streamline operations, enhance
@@ -78,32 +98,25 @@ export function Hero() {
               </motion.div>
             </motion.div>
           </div>
-          <motion.div
-            variants={itemVariants}
-            className="relative h-[400px] w-full rounded-lg overflow-hidden shadow-xl"
-          >
+          {/* Right side is now empty to let the background image show through */}
+          <div className="h-[400px]">
+            {/* Additional animated elements to enhance the right side of the background */}
             <motion.div
+              className="relative h-full w-full"
               animate={{
-                scale: [1, 1.03, 1],
+                opacity: [0.7, 1, 0.7],
               }}
               transition={{
                 duration: 8,
                 repeat: Infinity,
                 repeatType: 'reverse',
               }}
-              className="w-full h-full relative"
             >
-              {/* Hero image with subtle animation */}
-              <img
-                src="/images/hero_image__.png"
-                alt="AI-Powered Business Solutions"
-                className="w-full h-full object-cover rounded-lg"
-              />
-
-              {/* Overlay gradient for better text contrast if needed */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent rounded-lg" />
+              {/* Subtle glow effects to highlight the background image */}
+              <div className="absolute top-1/4 right-1/4 w-32 h-32 rounded-full bg-primary/10 blur-xl"></div>
+              <div className="absolute bottom-1/3 right-1/2 w-48 h-48 rounded-full bg-secondary/10 blur-xl"></div>
             </motion.div>
-          </motion.div>
+          </div>
         </motion.div>
       </Container>
     </section>

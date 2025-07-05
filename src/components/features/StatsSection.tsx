@@ -1,7 +1,6 @@
 'use client';
 
 import { Container } from '@/components/layout/Container';
-import { SectionBackground } from '@/components/ui/SectionBackground';
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 import { Briefcase, Users, Award } from 'lucide-react';
@@ -67,8 +66,29 @@ export function StatsSection() {
 
   return (
     <section className="py-16 relative overflow-hidden">
-      {/* Use the reusable SectionBackground component */}
-      <SectionBackground variant="gradient" />
+      {/* Custom background with stats-focused design */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        {/* Background image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: 'url("/images/states_background.png")' }}
+        />
+        
+        {/* Overlay gradient for better contrast with stats cards */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0E17]/70 via-[#101C2C]/60 to-[#0A0E17]/70" />
+        
+        {/* Animated elements */}
+        <motion.div
+          className="absolute inset-0"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5 }}
+        >
+          {/* Subtle glowing orbs */}
+          <div className="absolute top-1/3 right-1/4 w-64 h-64 rounded-full bg-[#0072FF]/5 blur-3xl" />
+          <div className="absolute bottom-1/3 left-1/4 w-80 h-80 rounded-full bg-[#6E00FF]/5 blur-3xl" />
+        </motion.div>
+      </div>
 
       <Container>
         <motion.div
