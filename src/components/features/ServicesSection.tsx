@@ -2,6 +2,7 @@
 
 import { Container } from '@/components/layout/Container';
 import { ServiceCard } from '@/components/features/ServiceCard';
+import { SectionBackground } from '@/components/ui/SectionBackground';
 import { Code, Layout, Smartphone, Database, Globe, Shield } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -40,7 +41,8 @@ export function ServicesSection() {
   ];
 
   return (
-    <section className="py-16 bg-secondary/20">
+    <section className="py-16 relative overflow-hidden">
+      <SectionBackground variant="dots" />
       <Container>
         <div className="text-center mb-12">
           <motion.h2
