@@ -291,7 +291,7 @@ export function Footer() {
           </div>
           <div className="relative flex justify-center">
             <motion.div
-              className="px-4 bg-background text-primary"
+              className="px-4 bg-[#0A0E17]/80 text-primary"
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
