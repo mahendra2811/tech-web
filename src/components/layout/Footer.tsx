@@ -4,20 +4,12 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { siteConfig } from '@/config/site';
 import { cn } from '@/lib/utils';
-import {
-  Github,
-  Twitter,
-  Linkedin,
-  ArrowUp,
-  Code,
-  Server,
-  Database,
-  Cloud,
-  Cpu,
-  Layers,
-} from 'lucide-react';
+import { BinaryRain } from '@/components/backgrounds/bg_7_BinaryRain';
+import { Github, Twitter, Linkedin, ArrowUp } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { RadarSweep } from '../backgrounds/bg_8_RadarSweep';
+import { MarketRays } from '../backgrounds/bg_2_MarketRays';
 
 export function Footer() {
   const pathname = usePathname();
@@ -46,151 +38,10 @@ export function Footer() {
   };
 
   return (
-    <footer
-      className="relative border-t bg-cover bg-center bg-no-repeat"
-      id="footer"
-      style={{ backgroundImage: 'url("/images/footer_bg.png")' }}
-    >
-      {/* Background with animated elements */}
+    <footer className="relative border-t" id="footer">
+      {/* Binary Rain Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-        {/* Lighter gradient overlay for better visibility of the background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0E17]/30 via-[#101C2C]/20 to-[#0A0E17]/30" />
-
-        {/* Animated floating tech icons */}
-        <motion.div
-          className={`absolute opacity-20 h-8 w-8 top-[20%] left-[15%]`}
-          animate={{
-            y: [0, -30, 0],
-            x: [0, 20, 0],
-            rotate: [0, 360],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            repeatType: 'reverse',
-            ease: 'easeInOut',
-          }}
-        >
-          <Code className="text-[#0072FF]" />
-        </motion.div>
-
-        <motion.div
-          className={`absolute opacity-20 h-10 w-10 top-[35%] right-[25%]`}
-          animate={{
-            y: [0, 40, 0],
-            x: [0, -30, 0],
-            rotate: [0, 360],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            repeatType: 'reverse',
-            ease: 'easeInOut',
-          }}
-        >
-          <Server className="text-[#00E5FF]" />
-        </motion.div>
-
-        <motion.div
-          className={`absolute opacity-20 h-6 w-6 bottom-[30%] left-[30%]`}
-          animate={{
-            y: [0, 30, 0],
-            x: [0, 20, 0],
-            rotate: [0, 360],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            repeatType: 'reverse',
-            ease: 'easeInOut',
-          }}
-        >
-          <Database className="text-[#6E00FF]" />
-        </motion.div>
-
-        <motion.div
-          className={`absolute opacity-20 h-12 w-12 top-[60%] right-[15%]`}
-          animate={{
-            y: [0, -40, 0],
-            x: [0, -20, 0],
-            rotate: [0, 360],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            repeatType: 'reverse',
-            ease: 'easeInOut',
-          }}
-        >
-          <Cloud className="text-[#0072FF]" />
-        </motion.div>
-
-        <motion.div
-          className={`absolute opacity-20 h-7 w-7 top-[15%] right-[40%]`}
-          animate={{
-            y: [0, 25, 0],
-            x: [0, 25, 0],
-            rotate: [0, 360],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 22,
-            repeat: Infinity,
-            repeatType: 'reverse',
-            ease: 'easeInOut',
-          }}
-        >
-          <Cpu className="text-[#00E5FF]" />
-        </motion.div>
-
-        <motion.div
-          className={`absolute opacity-20 h-9 w-9 bottom-[20%] right-[35%]`}
-          animate={{
-            y: [0, -35, 0],
-            x: [0, -15, 0],
-            rotate: [0, 360],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 30,
-            repeat: Infinity,
-            repeatType: 'reverse',
-            ease: 'easeInOut',
-          }}
-        >
-          <Layers className="text-[#6E00FF]" />
-        </motion.div>
-
-        {/* Glowing orbs */}
-        <motion.div
-          className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-[#0072FF]/5 blur-3xl"
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.2, 0.4, 0.2],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            repeatType: 'reverse',
-          }}
-        />
-        <motion.div
-          className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-[#6E00FF]/5 blur-3xl"
-          animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.1, 0.3, 0.1],
-          }}
-          transition={{
-            duration: 10,
-            repeat: Infinity,
-            repeatType: 'reverse',
-            delay: 2,
-          }}
-        />
+        <MarketRays/>
       </div>
       <div className="container py-12 md:py-16 mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -284,47 +135,6 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Decorative divider */}
-        <div className="relative mt-12 mb-8">
-          <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-white/10"></div>
-          </div>
-          <div className="relative flex justify-center">
-            <motion.div
-              className="px-4 bg-[#0A0E17]/80 text-primary"
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                />
-                <path
-                  d="M7.5 12H16.5"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                />
-                <path
-                  d="M12 7.5V16.5"
-                  stroke="currentColor"
-                  strokeWidth="1.5"
-                  strokeLinecap="round"
-                />
-              </svg>
-            </motion.div>
-          </div>
-        </div>
 
         {/* Copyright */}
         <div className="pt-4 flex flex-col md:flex-row justify-between items-center text-sm text-muted-foreground">
