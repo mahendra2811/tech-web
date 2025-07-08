@@ -81,7 +81,7 @@ export default function BackgroundsDemo() {
             ))}
           </div>
 
-          <div className="text-white/80">
+          {/* <div className="text-white/80">
             <h2 className="text-2xl font-semibold mb-4">{backgrounds[activeBackground].name}</h2>
             <p className="mb-4">
               This is one of 15 animated background components created using React, TypeScript,
@@ -93,7 +93,7 @@ export default function BackgroundsDemo() {
               seamlessly. They can be used as decorative elements in various sections of the
               website.
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

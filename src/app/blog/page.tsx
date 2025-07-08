@@ -1,10 +1,9 @@
 'use client';
 
 import { Container } from '@/components/layout/Container';
-import { AnimatedBackground } from '@/components/ui/AnimatedBackground';
+import { PageHero } from '@/components/common/PageHero';
 import Link from 'next/link';
 import { format } from 'date-fns';
-import { motion } from 'framer-motion';
 
 export default function BlogPage() {
   // In a real application, this data would come from a CMS or API
@@ -68,28 +67,10 @@ export default function BlogPage() {
   return (
     <>
       {/* Hero Section */}
-      <AnimatedBackground>
-        <Container>
-          <div className="max-w-3xl mx-auto text-center">
-            <motion.h1
-              className="text-4xl md:text-5xl font-bold mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              Our Blog
-            </motion.h1>
-            <motion.p
-              className="text-xl text-muted-foreground"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              Insights, tutorials, and updates from our team of experts
-            </motion.p>
-          </div>
-        </Container>
-      </AnimatedBackground>
+      <PageHero
+        title="Our Blog"
+        description="Insights, tutorials, and updates from our team of experts"
+      />
 
       {/* Blog Posts Grid */}
       <section className="py-16">

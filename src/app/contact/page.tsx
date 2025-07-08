@@ -1,38 +1,19 @@
 'use client';
 
 import { Container } from '@/components/layout/Container';
-import { AnimatedBackground } from '@/components/ui/AnimatedBackground';
+import { PageHero } from '@/components/common/PageHero';
 import { ContactForm } from '@/components/features/ContactForm';
 import { siteConfig } from '@/config/site';
 import { Mail, Phone, MapPin } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 export default function ContactPage() {
   return (
     <>
       {/* Hero Section */}
-      <AnimatedBackground>
-        <Container>
-          <div className="max-w-3xl mx-auto text-center">
-            <motion.h1
-              className="text-4xl md:text-5xl font-bold mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              Contact Us
-            </motion.h1>
-            <motion.p
-              className="text-xl text-muted-foreground"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              Have questions or want to discuss a project? We&apos;d love to hear from you.
-            </motion.p>
-          </div>
-        </Container>
-      </AnimatedBackground>
+      <PageHero
+        title="Contact Us"
+        description="Have questions or want to discuss a project? We'd love to hear from you."
+      />
 
       {/* Contact Info & Form Section */}
       <section className="py-16">

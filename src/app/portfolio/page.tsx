@@ -2,14 +2,15 @@
 
 import { useState, useMemo } from 'react';
 import { Container } from '@/components/layout/Container';
-import { AnimatedBackground } from '@/components/ui/AnimatedBackground';
-import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { PageHero } from '@/components/common/PageHero';
+import { CTASection } from '@/components/common/CTASection';
+import { BubbleBloom } from '@/components/backgrounds/bg_1_BubbleBloom';
 import { PROJECTS } from '@/constant/projects';
 import { TESTIMONIALS } from '@/constant/testimonials';
-import { ProjectFilter } from '@/components/features/ProjectFilter';
-import { ProjectsGrid } from '@/components/features/ProjectsGrid';
-import { TestimonialsGrid } from '@/components/features/TestimonialsGrid';
+import { ProjectFilter } from '@/components/portfolio/ProjectFilter';
+import { ProjectsGrid } from '@/components/portfolio/ProjectsGrid';
+import { TestimonialsGrid } from '@/components/portfolio/TestimonialsGrid';
+import { HologramPulse } from '@/components/backgrounds';
 
 export default function PortfolioPage() {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -42,48 +43,22 @@ export default function PortfolioPage() {
   return (
     <>
       {/* Hero Section */}
-      <AnimatedBackground>
-        <Container>
-          <div className="max-w-3xl mx-auto text-center">
-            <motion.h1
-              className="text-4xl md:text-5xl font-bold mb-6"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              Our Portfolio
-            </motion.h1>
-            <motion.p
-              className="text-xl text-muted-foreground"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              Explore our past projects and see how we&apos;ve helped businesses achieve their
-              goals.
-            </motion.p>
-          </div>
-        </Container>
-      </AnimatedBackground>
+      <PageHero
+        title="Our Portfolio"
+        description="Explore our past projects and see how we've helped businesses achieve their goals."
+      />
 
       {/* Projects Section */}
       <section className="py-16 relative">
-        {/* Background Image */}
-        <div
-          className="absolute inset-0 w-full h-full opacity-30 z-0"
-          style={{
-            backgroundImage: 'url(/images/states_background.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            mixBlendMode: 'overlay',
-          }}
-        />
+        {/* DataFlow Background */}
+        <div className="absolute inset-0 w-full h-full">
+          <HologramPulse bgImage="/images/about_our_story_bg.png" />
+        </div>
 
         <Container className="relative z-10">
           <div className="mb-12 text-center">
-            <h2 className="text-3xl font-bold mb-4">Our Projects</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold mb-4 text-white">Our Projects</h2>
+            <p className="text-xl text-white/80 max-w-2xl mx-auto">
               Browse our portfolio of successful projects across various industries and technologies
             </p>
           </div>
@@ -97,11 +72,16 @@ export default function PortfolioPage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-16 bg-secondary/20">
-        <Container>
+      <section className="py-16 relative">
+        {/* BubbleBloom Background */}
+        <div className="absolute inset-0 w-full h-full">
+          <BubbleBloom />
+        </div>
+
+        <Container className="relative z-10">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Client Testimonials</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold mb-4 text-white">Client Testimonials</h2>
+            <p className="text-xl text-white/80 max-w-2xl mx-auto">
               What our clients say about working with us
             </p>
           </div>
@@ -111,23 +91,13 @@ export default function PortfolioPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16">
-        <Container>
-          <div className="text-center">
-            <h2 className="text-3xl font-bold mb-4">Ready to Start Your Project?</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-              Let&apos;s discuss how we can help you achieve your business goals with our software
-              development expertise.
-            </p>
-            <Link
-              href="/contact"
-              className="inline-flex h-12 items-center justify-center rounded-md bg-primary px-6 text-base font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            >
-              Contact Us
-            </Link>
-          </div>
-        </Container>
-      </section>
+      <CTASection
+        title="Ready to Start Your Project?"
+        description="Contact us today to discuss how we can help you achieve your business goals with our software development services."
+        buttonText="Get in Touch"
+        buttonLink="/contact"
+        useTechBackground={true}
+      />
     </>
   );
 }
