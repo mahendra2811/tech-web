@@ -12,6 +12,11 @@ import {
   RadarSweep,
   PixelFlow,
   HologramMesh,
+  ImageRays,
+  BubbleMatrix,
+  DataFlow,
+  HologramPulse,
+  InteractiveOrbits,
 } from '@/components/backgrounds';
 
 export default function BackgroundsDemo() {
@@ -28,15 +33,31 @@ export default function BackgroundsDemo() {
     { name: 'Radar Sweep', Component: RadarSweep },
     { name: 'Pixel Flow', Component: PixelFlow },
     { name: 'Hologram Mesh', Component: HologramMesh },
+    { name: 'Image Rays', Component: ImageRays },
+    { name: 'Bubble Matrix', Component: BubbleMatrix },
+    { name: 'Data Flow', Component: DataFlow },
+    { name: 'Hologram Pulse', Component: HologramPulse },
+    { name: 'Interactive Orbits', Component: InteractiveOrbits },
   ];
 
-  const { Component } = backgrounds[activeBackground];
+  const { Component, name } = backgrounds[activeBackground];
+
+  // Default background image for components that require it
+  const defaultBgImage = '/images/hero_image__.png';
+
+  // Check if this is one of the new components that requires a bgImage prop
+  const needsBgImage =
+    name === 'Image Rays' ||
+    name === 'Bubble Matrix' ||
+    name === 'Data Flow' ||
+    name === 'Hologram Pulse' ||
+    name === 'Interactive Orbits';
 
   return (
     <div className="min-h-screen flex flex-col">
       {/* Background container */}
       <div className="fixed inset-0 -z-10">
-        <Component />
+        {needsBgImage ? <Component bgImage={defaultBgImage} /> : <Component />}
       </div>
 
       {/* Content */}
@@ -44,7 +65,7 @@ export default function BackgroundsDemo() {
         <div className="bg-black/50 backdrop-blur-md p-8 rounded-xl max-w-3xl w-full">
           <h1 className="text-4xl font-bold text-white mb-6 text-center">Animated Backgrounds</h1>
 
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-2 mb-8">
+          <div className="grid grid-cols-3 md:grid-cols-5 gap-2 mb-8">
             {backgrounds.map((bg, index) => (
               <button
                 key={index}
@@ -63,7 +84,7 @@ export default function BackgroundsDemo() {
           <div className="text-white/80">
             <h2 className="text-2xl font-semibold mb-4">{backgrounds[activeBackground].name}</h2>
             <p className="mb-4">
-              This is one of 10 animated background components created using React, TypeScript,
+              This is one of 15 animated background components created using React, TypeScript,
               Framer Motion, and Tailwind CSS. Each background features unique animations and visual
               effects with Lucide icons.
             </p>

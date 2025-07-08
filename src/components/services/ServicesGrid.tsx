@@ -2,7 +2,9 @@
 
 import { Container } from '@/components/layout/Container';
 import { ServiceCard } from '@/components/features/ServiceCard';
-import { RadarSweep } from '@/components/backgrounds/bg_8_RadarSweep';
+import { BubbleMatrix } from '@/components/backgrounds/bg_12_BubbleMatrix';
+import { HologramMesh } from '../backgrounds/bg_10_HologramMesh';
+import { HologramPulse } from '../backgrounds';
 
 interface Service {
   title: string;
@@ -18,7 +20,7 @@ export const ServicesGrid = ({ services }: ServicesGridProps) => {
   return (
     <section className="py-16 relative overflow-hidden">
       <div className="absolute inset-0 -z-10">
-        <RadarSweep />
+        <HologramPulse bgImage="/images/about_our_story_bg.png" />
       </div>
 
       <Container>
