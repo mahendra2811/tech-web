@@ -1,86 +1,103 @@
-import { Container } from "@/components/layout/Container";
-import Link from "next/link";
-import { format } from "date-fns";
+'use client';
 
-export const metadata = {
-  title: "Blog",
-  description: "Read our latest articles, insights, and updates on software development.",
-};
+import { Container } from '@/components/layout/Container';
+import { AnimatedBackground } from '@/components/ui/AnimatedBackground';
+import Link from 'next/link';
+import { format } from 'date-fns';
+import { motion } from 'framer-motion';
 
 export default function BlogPage() {
   // In a real application, this data would come from a CMS or API
   const posts = [
     {
-      id: "1",
-      title: "The Future of Web Development: Trends to Watch in 2025",
-      excerpt: "Explore the emerging technologies and methodologies that are shaping the future of web development.",
-      date: new Date("2025-05-15"),
-      author: "John Doe",
-      category: "Web Development",
+      id: '1',
+      title: 'The Future of Web Development: Trends to Watch in 2025',
+      excerpt:
+        'Explore the emerging technologies and methodologies that are shaping the future of web development.',
+      date: new Date('2025-05-15'),
+      author: 'John Doe',
+      category: 'Web Development',
     },
     {
-      id: "2",
-      title: "Building Scalable Applications with Microservices",
-      excerpt: "Learn how to design and implement microservices architecture for better scalability and maintainability.",
-      date: new Date("2025-05-10"),
-      author: "Jane Smith",
-      category: "Architecture",
+      id: '2',
+      title: 'Building Scalable Applications with Microservices',
+      excerpt:
+        'Learn how to design and implement microservices architecture for better scalability and maintainability.',
+      date: new Date('2025-05-10'),
+      author: 'Jane Smith',
+      category: 'Architecture',
     },
     {
-      id: "3",
-      title: "The Impact of AI on Software Development",
-      excerpt: "Discover how artificial intelligence is transforming the way we build and maintain software applications.",
-      date: new Date("2025-05-05"),
-      author: "Michael Johnson",
-      category: "Artificial Intelligence",
+      id: '3',
+      title: 'The Impact of AI on Software Development',
+      excerpt:
+        'Discover how artificial intelligence is transforming the way we build and maintain software applications.',
+      date: new Date('2025-05-05'),
+      author: 'Michael Johnson',
+      category: 'Artificial Intelligence',
     },
     {
-      id: "4",
-      title: "Optimizing React Applications for Performance",
-      excerpt: "Practical tips and techniques for improving the performance of your React applications.",
-      date: new Date("2025-04-28"),
-      author: "Sarah Williams",
-      category: "React",
+      id: '4',
+      title: 'Optimizing React Applications for Performance',
+      excerpt:
+        'Practical tips and techniques for improving the performance of your React applications.',
+      date: new Date('2025-04-28'),
+      author: 'Sarah Williams',
+      category: 'React',
     },
     {
-      id: "5",
-      title: "Securing Your Web Applications: Best Practices",
-      excerpt: "Essential security measures to protect your web applications from common vulnerabilities and threats.",
-      date: new Date("2025-04-20"),
-      author: "David Brown",
-      category: "Security",
+      id: '5',
+      title: 'Securing Your Web Applications: Best Practices',
+      excerpt:
+        'Essential security measures to protect your web applications from common vulnerabilities and threats.',
+      date: new Date('2025-04-20'),
+      author: 'David Brown',
+      category: 'Security',
     },
     {
-      id: "6",
-      title: "The Role of DevOps in Modern Software Development",
-      excerpt: "How DevOps practices can streamline your development process and improve collaboration between teams.",
-      date: new Date("2025-04-15"),
-      author: "Emily Davis",
-      category: "DevOps",
+      id: '6',
+      title: 'The Role of DevOps in Modern Software Development',
+      excerpt:
+        'How DevOps practices can streamline your development process and improve collaboration between teams.',
+      date: new Date('2025-04-15'),
+      author: 'Emily Davis',
+      category: 'DevOps',
     },
   ];
 
   return (
     <>
       {/* Hero Section */}
-      <section className="py-20 bg-muted/30">
+      <AnimatedBackground>
         <Container>
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Blog</h1>
-            <p className="text-xl text-muted-foreground">
+            <motion.h1
+              className="text-4xl md:text-5xl font-bold mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              Our Blog
+            </motion.h1>
+            <motion.p
+              className="text-xl text-muted-foreground"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               Insights, tutorials, and updates from our team of experts
-            </p>
+            </motion.p>
           </div>
         </Container>
-      </section>
+      </AnimatedBackground>
 
       {/* Blog Posts Grid */}
       <section className="py-16">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {posts.map((post) => (
-              <article 
-                key={post.id} 
+              <article
+                key={post.id}
                 className="group relative overflow-hidden rounded-lg border bg-background shadow-sm transition-all hover:shadow-md flex flex-col"
               >
                 <div className="relative h-48 w-full bg-muted overflow-hidden">
@@ -93,16 +110,19 @@ export default function BlogPage() {
                     <span className="inline-block px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">
                       {post.category}
                     </span>
-                    <time className="text-xs text-muted-foreground" dateTime={post.date.toISOString()}>
-                      {format(post.date, "MMMM d, yyyy")}
+                    <time
+                      className="text-xs text-muted-foreground"
+                      dateTime={post.date.toISOString()}
+                    >
+                      {format(post.date, 'MMMM d, yyyy')}
                     </time>
                   </div>
                   <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
                   <p className="text-muted-foreground mb-4 flex-1">{post.excerpt}</p>
                   <div className="flex items-center justify-between mt-auto">
                     <span className="text-sm text-muted-foreground">By {post.author}</span>
-                    <Link 
-                      href={`/blog/${post.id}`} 
+                    <Link
+                      href={`/blog/${post.id}`}
                       className="text-sm font-medium text-primary hover:underline"
                     >
                       Read More →

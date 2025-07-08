@@ -1,10 +1,9 @@
-import { Container } from '@/components/layout/Container';
-import Link from 'next/link';
+'use client';
 
-export const metadata = {
-  title: 'Our Portfolio',
-  description: 'Explore our past projects and success stories.',
-};
+import { Container } from '@/components/layout/Container';
+import { AnimatedBackground } from '@/components/ui/AnimatedBackground';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
 
 export default function PortfolioPage() {
   const projects = [
@@ -55,17 +54,29 @@ export default function PortfolioPage() {
   return (
     <>
       {/* Hero Section */}
-      <section className="py-20 bg-muted/30">
+      <AnimatedBackground>
         <Container>
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Portfolio</h1>
-            <p className="text-xl text-muted-foreground">
+            <motion.h1
+              className="text-4xl md:text-5xl font-bold mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              Our Portfolio
+            </motion.h1>
+            <motion.p
+              className="text-xl text-muted-foreground"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
               Explore our past projects and see how we&apos;ve helped businesses achieve their
               goals.
-            </p>
+            </motion.p>
           </div>
         </Container>
-      </section>
+      </AnimatedBackground>
 
       {/* Projects Grid Section */}
       <section className="py-16">
