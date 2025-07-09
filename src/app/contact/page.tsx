@@ -5,6 +5,7 @@ import { PageHero } from '@/components/common/PageHero';
 import { ContactForm } from '@/components/features/ContactForm';
 import { siteConfig } from '@/config/site';
 import { Mail, Phone, MapPin } from 'lucide-react';
+import { BubbleBloom } from '@/components/backgrounds/bg_1_BubbleBloom';
 
 export default function ContactPage() {
   return (
@@ -16,55 +17,60 @@ export default function ContactPage() {
       />
 
       {/* Contact Info & Form Section */}
-      <section className="py-16">
-        <Container>
+      <section className="py-16 relative">
+        {/* BubbleBloom Background */}
+        <div className="absolute inset-0 w-full h-full">
+          <BubbleBloom />
+        </div>
+        
+        <Container className="relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            <div>
-              <h2 className="text-3xl font-bold mb-6">Get In Touch</h2>
-              <p className="text-lg text-muted-foreground mb-8">
+            <div className="backdrop-blur-md bg-white/10 p-8 rounded-lg border border-white/20">
+              <h2 className="text-3xl font-bold mb-6 text-white">Get In Touch</h2>
+              <p className="text-lg text-white/80 mb-8">
                 Fill out the form and our team will get back to you within 24 hours.
               </p>
 
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
-                  <div className="bg-primary/10 p-3 rounded-full">
-                    <Mail className="h-6 w-6 text-primary" />
+                  <div className="bg-white/20 p-3 rounded-full">
+                    <Mail className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold mb-1">Email</h3>
-                    <p className="text-muted-foreground">{siteConfig.contact.email}</p>
+                    <h3 className="text-lg font-semibold mb-1 text-white">Email</h3>
+                    <p className="text-white/80">{siteConfig.contact.email}</p>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="bg-primary/10 p-3 rounded-full">
-                    <Phone className="h-6 w-6 text-primary" />
+                  <div className="bg-white/20 p-3 rounded-full">
+                    <Phone className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold mb-1">Phone</h3>
-                    <p className="text-muted-foreground">{siteConfig.contact.phone}</p>
+                    <h3 className="text-lg font-semibold mb-1 text-white">Phone</h3>
+                    <p className="text-white/80">{siteConfig.contact.phone}</p>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="bg-primary/10 p-3 rounded-full">
-                    <MapPin className="h-6 w-6 text-primary" />
+                  <div className="bg-white/20 p-3 rounded-full">
+                    <MapPin className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold mb-1">Address</h3>
-                    <p className="text-muted-foreground">{siteConfig.contact.address}</p>
+                    <h3 className="text-lg font-semibold mb-1 text-white">Address</h3>
+                    <p className="text-white/80">{siteConfig.contact.address}</p>
                   </div>
                 </div>
               </div>
 
               <div className="mt-12">
-                <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
+                <h3 className="text-xl font-semibold mb-4 text-white">Follow Us</h3>
                 <div className="flex space-x-4">
                   <a
                     href={siteConfig.links.twitter}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-muted p-3 rounded-full hover:bg-muted/80"
+                    className="bg-white/20 p-3 rounded-full hover:bg-white/30 text-white"
                   >
                     <svg
                       className="h-5 w-5"
@@ -79,7 +85,7 @@ export default function ContactPage() {
                     href={siteConfig.links.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-muted p-3 rounded-full hover:bg-muted/80"
+                    className="bg-white/20 p-3 rounded-full hover:bg-white/30 text-white"
                   >
                     <svg
                       className="h-5 w-5"
@@ -98,7 +104,7 @@ export default function ContactPage() {
                     href={siteConfig.links.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-muted p-3 rounded-full hover:bg-muted/80"
+                    className="bg-white/20 p-3 rounded-full hover:bg-white/30 text-white"
                   >
                     <svg
                       className="h-5 w-5"
@@ -113,7 +119,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="bg-background p-8 rounded-lg shadow-sm">
+            <div className="backdrop-blur-md bg-white/10 p-8 rounded-lg border border-white/20 shadow-sm">
               <ContactForm />
             </div>
           </div>

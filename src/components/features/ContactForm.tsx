@@ -93,13 +93,13 @@ export function ContactForm() {
       }}
     >
       <motion.div custom={0} variants={formItemVariants}>
-        <label htmlFor="name" className="block text-sm font-medium mb-2">
+        <label htmlFor="name" className="block text-sm font-medium mb-2 text-white">
           Name
         </label>
         <input
           id="name"
           {...register('name')}
-          className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-primary focus:outline-none transition-shadow duration-200"
+          className="w-full px-4 py-2 border border-white/30 bg-white/10 backdrop-blur-sm text-white placeholder:text-white/50 rounded-md focus:ring-2 focus:ring-primary focus:outline-none transition-shadow duration-200"
         />
         <AnimatePresence>
           {errors.name && (
@@ -116,14 +116,14 @@ export function ContactForm() {
       </motion.div>
 
       <motion.div custom={1} variants={formItemVariants}>
-        <label htmlFor="email" className="block text-sm font-medium mb-2">
+        <label htmlFor="email" className="block text-sm font-medium mb-2 text-white">
           Email
         </label>
         <input
           id="email"
           type="email"
           {...register('email')}
-          className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-primary focus:outline-none transition-shadow duration-200"
+          className="w-full px-4 py-2 border border-white/30 bg-white/10 backdrop-blur-sm text-white placeholder:text-white/50 rounded-md focus:ring-2 focus:ring-primary focus:outline-none transition-shadow duration-200"
         />
         <AnimatePresence>
           {errors.email && (
@@ -140,13 +140,13 @@ export function ContactForm() {
       </motion.div>
 
       <motion.div custom={2} variants={formItemVariants}>
-        <label htmlFor="subject" className="block text-sm font-medium mb-2">
+        <label htmlFor="subject" className="block text-sm font-medium mb-2 text-white">
           Subject
         </label>
         <input
           id="subject"
           {...register('subject')}
-          className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-primary focus:outline-none transition-shadow duration-200"
+          className="w-full px-4 py-2 border border-white/30 bg-white/10 backdrop-blur-sm text-white placeholder:text-white/50 rounded-md focus:ring-2 focus:ring-primary focus:outline-none transition-shadow duration-200"
         />
         <AnimatePresence>
           {errors.subject && (
@@ -163,14 +163,14 @@ export function ContactForm() {
       </motion.div>
 
       <motion.div custom={3} variants={formItemVariants}>
-        <label htmlFor="message" className="block text-sm font-medium mb-2">
+        <label htmlFor="message" className="block text-sm font-medium mb-2 text-white">
           Message
         </label>
         <textarea
           id="message"
           {...register('message')}
           rows={5}
-          className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-primary focus:outline-none transition-shadow duration-200"
+          className="w-full px-4 py-2 border border-white/30 bg-white/10 backdrop-blur-sm text-white placeholder:text-white/50 rounded-md focus:ring-2 focus:ring-primary focus:outline-none transition-shadow duration-200"
         />
         <AnimatePresence>
           {errors.message && (

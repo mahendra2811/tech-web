@@ -4,6 +4,8 @@ import { Container } from '@/components/layout/Container';
 import { PageHero } from '@/components/common/PageHero';
 import Link from 'next/link';
 import { format } from 'date-fns';
+import { BinaryRain } from '@/components/backgrounds/bg_7_BinaryRain';
+import { QuantumDots } from '@/components/backgrounds/bg_5_QuantumDots';
 
 export default function BlogPage() {
   // In a real application, this data would come from a CMS or API
@@ -73,38 +75,43 @@ export default function BlogPage() {
       />
 
       {/* Blog Posts Grid */}
-      <section className="py-16">
-        <Container>
+      <section className="py-16 relative">
+        {/* BinaryRain Background */}
+        <div className="absolute inset-0 w-full h-full">
+          <BinaryRain />
+        </div>
+        
+        <Container className="relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {posts.map((post) => (
               <article
                 key={post.id}
-                className="group relative overflow-hidden rounded-lg border bg-background shadow-sm transition-all hover:shadow-md flex flex-col"
+                className="group relative overflow-hidden rounded-lg border border-white/20 bg-transparent backdrop-blur-md shadow-sm transition-all hover:shadow-md flex flex-col"
               >
                 <div className="relative h-48 w-full bg-muted overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center text-2xl font-bold text-primary/30">
                     Blog Image
                   </div>
                 </div>
-                <div className="p-6 flex-1 flex flex-col">
+                <div className="p-6 flex-1 flex flex-col backdrop-blur-md bg-white/10">
                   <div className="mb-2 flex items-center space-x-2">
-                    <span className="inline-block px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">
+                    <span className="inline-block px-3 py-1 text-xs font-medium bg-primary/20 text-white rounded-full">
                       {post.category}
                     </span>
                     <time
-                      className="text-xs text-muted-foreground"
+                      className="text-xs text-white/70"
                       dateTime={post.date.toISOString()}
                     >
                       {format(post.date, 'MMMM d, yyyy')}
                     </time>
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
-                  <p className="text-muted-foreground mb-4 flex-1">{post.excerpt}</p>
+                  <h3 className="text-xl font-semibold mb-2 text-white">{post.title}</h3>
+                  <p className="text-white/80 mb-4 flex-1 line-clamp-3">{post.excerpt}</p>
                   <div className="flex items-center justify-between mt-auto">
-                    <span className="text-sm text-muted-foreground">By {post.author}</span>
+                    <span className="text-sm text-white/70">By {post.author}</span>
                     <Link
                       href={`/blog/${post.id}`}
-                      className="text-sm font-medium text-primary hover:underline"
+                      className="text-sm font-medium text-white hover:text-primary hover:underline"
                     >
                       Read More →
                     </Link>
@@ -117,18 +124,23 @@ export default function BlogPage() {
       </section>
 
       {/* Newsletter Section */}
-      <section className="py-16 bg-secondary/20">
-        <Container>
+      <section className="py-16 relative">
+        {/* QuantumDots Background */}
+        <div className="absolute inset-0 w-full h-full">
+          <QuantumDots />
+        </div>
+        
+        <Container className="relative z-10">
           <div className="max-w-2xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">Subscribe to Our Newsletter</h2>
-            <p className="text-xl text-muted-foreground mb-8">
+            <h2 className="text-3xl font-bold mb-4 text-white">Subscribe to Our Newsletter</h2>
+            <p className="text-xl text-white/80 mb-8">
               Stay updated with our latest articles, insights, and company news.
             </p>
             <form className="flex flex-col sm:flex-row gap-4">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 rounded-md border focus:ring-2 focus:ring-primary focus:outline-none"
+                className="flex-1 px-4 py-3 rounded-md border border-white/30 bg-white/10 backdrop-blur-md text-white placeholder:text-white/50 focus:ring-2 focus:ring-primary focus:outline-none"
                 required
               />
               <button

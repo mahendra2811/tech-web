@@ -1,203 +1,141 @@
-# Advanced Software Development Company Website
+# My Website - Modern Web Application
 
-A modern, responsive website for a software development company built with Next.js, TypeScript, and Tailwind CSS.
+## Project Overview
 
-## Features
+This is a modern, responsive website built with Next.js, React, TypeScript, and TailwindCSS. The website showcases a software development company's services, portfolio, and contact information with a sleek, professional design featuring animated backgrounds and interactive elements.
 
-- Responsive design with mobile-first approach
-- Dark mode support
-- Server-side rendering with Next.js App Router
-- TypeScript for type safety
-- Tailwind CSS for styling
-- Form validation with React Hook Form and Zod
-- Animations with Framer Motion
-- API routes for contact form and newsletter subscription
-- Authentication pages (login/register)
+## Key Features
+
+- **Modern UI/UX**: Sleek design with animated backgrounds, interactive elements, and smooth transitions
+- **Responsive Design**: Fully responsive layout that works on all devices
+- **Dark/Light Mode**: Theme toggle functionality for user preference
+- **Animated Components**: Framer Motion animations for enhanced user experience
+- **Form Validation**: Zod schema validation for contact and authentication forms
+- **API Routes**: Next.js API routes for handling form submissions
+- **Authentication System**: Login/Register functionality (currently mocked)
+- **Portfolio Showcase**: Filterable project grid with detailed project information
+- **Services Section**: Showcase of company services with interactive cards
+- **Contact Form**: Functional contact form with validation
+- **SEO Optimized**: Metadata configuration for better search engine visibility
 
 ## Tech Stack
 
-- **Framework**: Next.js 13+ (App Router)
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **UI Components**: ShadCN UI
-- **Animation**: Framer Motion
-- **Form Handling**: React Hook Form with Zod validation
-- **Icons**: Lucide Icons
-- **Email**: Resend
-- **HTTP Client**: Axios
-- **Date Formatting**: date-fns
+### Frontend
+- **Next.js 15**: React framework with App Router
+- **React 19**: UI library
+- **TypeScript**: Type-safe JavaScript
+- **TailwindCSS**: Utility-first CSS framework
+- **Framer Motion**: Animation library
+- **React Hook Form**: Form handling
+- **Zod**: Schema validation
+- **Lucide React**: Icon library
+
+### Backend (Current Implementation)
+- **Next.js API Routes**: Server-side API endpoints
+- **Zod**: Request validation
 
 ## Project Structure
 
 ```
-/
-├── .github/workflows/    # GitHub Actions workflows
+my-website/
 ├── public/               # Static assets
+│   ├── fonts/            # Font files
+│   ├── images/           # Image assets
+│   └── ...
 ├── src/
-│   ├── app/              # Next.js App Router pages
-│   │   ├── api/          # API routes
-│   │   ├── (auth)/       # Authentication pages
+│   ├── app/              # Next.js App Router
+│   │   ├── (auth)/       # Authentication routes
 │   │   ├── about/        # About page
-│   │   ├── blog/         # Blog pages
+│   │   ├── api/          # API routes
+│   │   ├── backgrounds/  # Background showcase
+│   │   ├── blog/         # Blog page
 │   │   ├── contact/      # Contact page
 │   │   ├── portfolio/    # Portfolio page
 │   │   ├── services/     # Services page
+│   │   ├── globals.css   # Global styles
+│   │   ├── layout.tsx    # Root layout
 │   │   └── page.tsx      # Home page
 │   ├── components/       # React components
-│   │   ├── ui/           # UI components
-│   │   ├── layout/       # Layout components
+│   │   ├── backgrounds/  # Animated backgrounds
+│   │   ├── common/       # Common components
 │   │   ├── features/     # Feature components
-│   │   └── pages/        # Page-specific components
-│   ├── config/           # Configuration files
-│   ├── context/          # React context providers
-│   ├── hooks/            # Custom React hooks
+│   │   ├── layout/       # Layout components
+│   │   ├── portfolio/    # Portfolio components
+│   │   ├── services/     # Service components
+│   │   └── ui/           # UI components
+│   ├── config/           # Site configuration
+│   ├── constant/         # Constants and data
+│   ├── context/          # React context
+│   ├── hooks/            # Custom hooks
 │   ├── lib/              # Utility libraries
-│   ├── styles/           # Global styles
-│   ├── types/            # TypeScript type definitions
+│   ├── styles/           # Additional styles
+│   ├── types/            # TypeScript types
 │   └── utils/            # Utility functions
-├── .env                  # Environment variables
-├── .env.example          # Example environment variables
-├── next.config.js        # Next.js configuration
+├── .gitignore            # Git ignore file
+├── components.json       # Component configuration
+├── eslint.config.mjs     # ESLint configuration
+├── next.config.ts        # Next.js configuration
 ├── package.json          # Project dependencies
-├── tailwind.config.js    # Tailwind CSS configuration
+├── postcss.config.mjs    # PostCSS configuration
 └── tsconfig.json         # TypeScript configuration
 ```
-
-## Documentation
-
-Each directory in the project contains a detailed README.md file that explains:
-
-- The purpose of the directory
-- The components or files contained within
-- Usage examples with code snippets
-- Guidelines for adding new components or files
-- Planned future additions
-
-These README files are ignored by Git (via .gitignore) but provide valuable documentation for developers working on the project. They serve as a comprehensive guide to understanding the codebase structure and conventions.
-
-Key documentation files include:
-
-- `src/app/README.md` - App Router pages and API routes
-- `src/components/README.md` - Component organization and guidelines
-- `src/context/README.md` - Context providers for state management
-- `src/lib/README.md` - Utility functions and libraries
-- `src/config/README.md` - Configuration files and constants
-- `.github/README.md` - GitHub-specific files and workflows
-
-To view these files, you'll need to clone the repository as they are not included in the Git history.
 
 ## Getting Started
 
 ### Prerequisites
-
-- Node.js 18.x or later
+- Node.js (v18 or later)
 - npm or yarn
 
 ### Installation
 
-1. Clone the repository:
+1. Clone the repository
+```bash
+git clone https://github.com/yourusername/my-website.git
+cd my-website
+```
 
-   ```bash
-   git clone https://github.com/yourusername/software-company-website.git
-   cd software-company-website
-   ```
+2. Install dependencies
+```bash
+npm install
+# or
+yarn install
+```
 
-2. Install dependencies:
+3. Run the development server
+```bash
+npm run dev
+# or
+yarn dev
+```
 
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
+4. Open [http://localhost:3000](http://localhost:3000) in your browser
 
-3. Create a `.env` file based on `.env.example`:
+## Building for Production
 
-   ```bash
-   cp .env.example .env
-   ```
-
-4. Start the development server:
-
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
-
-5. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
-
-## Available Scripts
-
-- `npm run dev` - Start the development server
-- `npm run build` - Build the application for production
-- `npm run start` - Start the production server
-- `npm run lint` - Run ESLint to check for code quality issues
-
-## Automated Documentation
-
-This project includes an automated system that keeps the README files up-to-date with changes made to the codebase:
-
-1. Each directory contains a detailed README.md file documenting its purpose and contents
-2. When files are changed, added, or deleted, the corresponding README.md files are automatically updated
-3. Updates include a "Recent Changes" section that lists modified files with timestamps
-4. This automation is implemented via GitHub Actions (see `.github/workflows/update-readmes.yml`)
-
-The automation works as follows:
-
-- When changes are pushed to the main branch, a GitHub Action is triggered
-- The action identifies which files have changed (looking at multiple recent commits)
-- It then updates the corresponding README.md files with information about the changes
-- The updated README files are committed back to the repository
-
-Key improvements in the system:
-
-- README files are now tracked in Git (previously they were ignored)
-- The system examines multiple recent commits, not just the last one
-- Enhanced error handling and logging for better troubleshooting
-- Improved regex patterns for updating existing "Recent Changes" sections
-- Prevention of infinite loops by skipping commits with [skip ci] tag
-
-This ensures that documentation stays in sync with the codebase without manual effort, providing developers with up-to-date information about recent changes in each directory.
+```bash
+npm run build
+# or
+yarn build
+```
 
 ## Deployment
 
-This project is configured for easy deployment to Vercel. Simply connect your GitHub repository to Vercel and it will automatically deploy your application.
+The application can be deployed to various platforms:
+
+- **Vercel**: Recommended for Next.js applications
+- **Netlify**: Good alternative with similar features
+- **AWS/GCP/Azure**: For more custom deployment needs
+
+## Future Enhancements
+
+- **Backend Integration**: Connect to a real backend service
+- **Authentication**: Implement real authentication with JWT or OAuth
+- **Database**: Add database connectivity for dynamic content
+- **CMS Integration**: Add a headless CMS for content management
+- **Blog Functionality**: Implement a fully functional blog
+- **E-commerce Features**: Add product listings and checkout functionality
+- **Analytics**: Integrate analytics for tracking user behavior
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Recent Changes (2025-06-10)
-
-### Added
-
-- `components.json`
-
-### Modified
-
-- `.gitignore`
-- `package-lock.json`
-- `package.json`
-
+[MIT License](LICENSE)

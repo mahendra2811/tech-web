@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
+import apiService from "@/lib/api";
+import axios from "axios";
 
 // Define the schema for contact form validation
 const contactFormSchema = z.object({
@@ -20,40 +22,43 @@ export async function POST(request: NextRequest) {
     if (!result.success) {
       // Return validation errors
       return NextResponse.json(
-        { 
-          success: false, 
-          errors: result.error.format() 
-        }, 
+        {
+          success: false,
+          errors: result.error.format()
+        },
         { status: 400 }
       );
     }
     
     const { name, email, subject, message } = result.data;
     
-    // In a real application, you would:
-    // 1. Store the message in a database
-    // 2. Send an email notification
-    // 3. Possibly integrate with a CRM or ticketing system
-    
-    console.log("Contact form submission:", { name, email, subject, message });
-    
-    // For now, we'll just simulate a successful submission
-    // with a slight delay to mimic an API call
-    await new Promise((resolve) => setTimeout(resolve, 500));
-    
-    return NextResponse.json({ 
-      success: true, 
-      message: "Your message has been received. We'll get back to you soon!" 
-    });
+    try {
+      // Forward the request to the backend API
+      const response = await apiService.contact.send({ name, email, subject, message });
+      
+      // Return the backend's response
+      return NextResponse.json(response.data);
+    } catch (apiError) {
+      if (axios.isAxiosError(apiError) && apiError.response) {
+        // Return the error from the backend
+        return NextResponse.json(
+          apiError.response.data,
+          { status: apiError.response.status }
+        );
+      }
+      
+      // If it's a network error or other issue
+      throw apiError;
+    }
     
   } catch (error) {
     console.error("Contact form error:", error);
     
     return NextResponse.json(
-      { 
-        success: false, 
-        message: "An error occurred while processing your request. Please try again." 
-      }, 
+      {
+        success: false,
+        message: "An error occurred while processing your request. Please try again."
+      },
       { status: 500 }
     );
   }
