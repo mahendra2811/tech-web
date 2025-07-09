@@ -6,6 +6,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Loader2 } from 'lucide-react';
+import apiService from '@/lib/api';
 
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters' }),
@@ -42,16 +43,15 @@ export function ContactForm() {
     setSubmitError('');
 
     try {
-      // In a real application, you would send this data to your API
-      console.log('Form data:', data);
-
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // Send the form data to our backend API using our API service
+      await apiService.contact.send(data);
 
       setSubmitSuccess(true);
       reset();
     } catch (error) {
-      setSubmitError('An error occurred. Please try again.');
+      setSubmitError(
+        error instanceof Error ? error.message : 'An error occurred. Please try again.'
+      );
       console.error('Form submission error:', error);
     } finally {
       setIsSubmitting(false);
