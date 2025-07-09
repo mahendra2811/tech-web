@@ -4,11 +4,9 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { siteConfig } from '@/config/site';
 import { cn } from '@/lib/utils';
-import { BinaryRain } from '@/components/backgrounds/bg_7_BinaryRain';
 import { Github, Twitter, Linkedin, ArrowUp } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { RadarSweep } from '../backgrounds/bg_8_RadarSweep';
 import { MarketRays } from '../backgrounds/bg_2_MarketRays';
 
 export function Footer() {

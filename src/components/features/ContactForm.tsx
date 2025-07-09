@@ -11,6 +11,7 @@ import apiService from '@/lib/api';
 const contactFormSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters' }),
   email: z.string().email({ message: 'Please enter a valid email address' }),
+  phone: z.string().optional(),
   subject: z.string().min(5, { message: 'Subject must be at least 5 characters' }),
   message: z.string().min(10, { message: 'Message must be at least 10 characters' }),
 });
@@ -32,6 +33,7 @@ export function ContactForm() {
     defaultValues: {
       name: '',
       email: '',
+      phone: '',
       subject: '',
       message: '',
     },
@@ -43,8 +45,18 @@ export function ContactForm() {
     setSubmitError('');
 
     try {
+      // Get the selected country code
+      const countryCodeSelect = document.getElementById('countryCode') as HTMLSelectElement;
+      const countryCode = countryCodeSelect?.value || '+1';
+      
+      // Combine country code with phone number if phone is provided
+      const formData = {
+        ...data,
+        phone: data.phone ? `${countryCode} ${data.phone}` : '',
+      };
+      
       // Send the form data to our backend API using our API service
-      await apiService.contact.send(data);
+      await apiService.contact.send(formData);
 
       setSubmitSuccess(true);
       reset();
@@ -140,6 +152,35 @@ export function ContactForm() {
       </motion.div>
 
       <motion.div custom={2} variants={formItemVariants}>
+        <label htmlFor="phone" className="block text-sm font-medium mb-2 text-white">
+          Phone Number (Optional)
+        </label>
+        <div className="flex">
+          <select
+            id="countryCode"
+            className="w-24 px-2 py-2 border border-white/30 bg-white/10 backdrop-blur-sm text-white rounded-l-md focus:ring-2 focus:ring-primary focus:outline-none transition-shadow duration-200"
+            defaultValue="+1"
+          >
+            <option value="+1">+1 (US)</option>
+            <option value="+44">+44 (UK)</option>
+            <option value="+91">+91 (IN)</option>
+            <option value="+61">+61 (AU)</option>
+            <option value="+33">+33 (FR)</option>
+            <option value="+49">+49 (DE)</option>
+            <option value="+81">+81 (JP)</option>
+            <option value="+86">+86 (CN)</option>
+          </select>
+          <input
+            id="phone"
+            type="tel"
+            {...register('phone')}
+            className="w-full px-4 py-2 border border-white/30 border-l-0 bg-white/10 backdrop-blur-sm text-white placeholder:text-white/50 rounded-r-md focus:ring-2 focus:ring-primary focus:outline-none transition-shadow duration-200"
+            placeholder="(Optional)"
+          />
+        </div>
+      </motion.div>
+
+      <motion.div custom={3} variants={formItemVariants}>
         <label htmlFor="subject" className="block text-sm font-medium mb-2 text-white">
           Subject
         </label>
@@ -162,7 +203,7 @@ export function ContactForm() {
         </AnimatePresence>
       </motion.div>
 
-      <motion.div custom={3} variants={formItemVariants}>
+      <motion.div custom={5} variants={formItemVariants}>
         <label htmlFor="message" className="block text-sm font-medium mb-2 text-white">
           Message
         </label>

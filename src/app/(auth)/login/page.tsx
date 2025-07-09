@@ -42,8 +42,20 @@ export default function LoginPage() {
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
-      // Redirect to dashboard or home page
-      window.location.href = '/';
+      // For demo purposes, check if this is an admin login
+      if (data.email === 'admin@example.com' && data.password === 'password123') {
+        // Set a cookie for authentication
+        document.cookie = `auth_token=admin_token; path=/; max-age=${
+          data.rememberMe ? 60 * 60 * 24 * 30 : 60 * 60 * 24
+        }`;
+        
+        // Redirect to admin dashboard
+        window.location.href = '/admin';
+      } else {
+        // Regular user login
+        // Redirect to dashboard or home page
+        window.location.href = '/';
+      }
     } catch (err) {
       setError('Invalid email or password. Please try again.');
       console.error('Login error:', err);

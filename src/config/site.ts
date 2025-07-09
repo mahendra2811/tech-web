@@ -26,6 +26,7 @@ export const siteConfig = {
       { title: "Privacy Policy", href: "/privacy" },
       { title: "Terms of Service", href: "/terms" },
       { title: "Sitemap", href: "/sitemap.xml" },
+      { title: "Admin Pannel", href: "/admin" },
     ],
   },
 };

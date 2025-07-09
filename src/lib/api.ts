@@ -11,9 +11,12 @@ const api = axios.create({
 // Add a request interceptor for authentication
 api.interceptors.request.use(
   (config) => {
-    // Get the token from localStorage (only in browser)
+    // Get the token from cookies (only in browser)
     if (typeof window !== 'undefined') {
-      const token = localStorage.getItem('token');
+      const cookies = document.cookie.split(';');
+      const authCookie = cookies.find(cookie => cookie.trim().startsWith('auth_token='));
+      const token = authCookie ? authCookie.trim().substring('auth_token='.length) : null;
+      
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
       }
@@ -37,9 +40,9 @@ api.interceptors.response.use(
       
       // Handle 401 Unauthorized errors (token expired, etc.)
       if (error.response.status === 401) {
-        // Clear token and redirect to login if needed
+        // Clear token cookie and redirect to login if needed
         if (typeof window !== 'undefined') {
-          localStorage.removeItem('token');
+          document.cookie = 'auth_token=; path=/; expires=Thu, 01 Jan 1970 00:00:01 GMT';
           // Optionally redirect to login
           // window.location.href = '/login';
         }
@@ -89,13 +92,21 @@ const apiService = {
   
   // Contact endpoints
   contact: {
-    send: (formData: { name: string; email: string; subject: string; message: string }) => 
+    send: (formData: { name: string; email: string; phone?: string; subject: string; message: string }) =>
       api.post('/contact', formData),
+    getSubmissions: () => api.get('/contact/submissions'),
+    updateStatus: (id: string, status: 'new' | 'read' | 'responded' | 'archived') =>
+      api.put(`/contact/submissions/${id}/status`, { status }),
+    delete: (id: string) => api.delete(`/contact/submissions/${id}`),
   },
   
   // Newsletter endpoints
   newsletter: {
-    subscribe: (email: string) => api.post('/newsletter', { email }),
+    subscribe: (email: string) => api.post('/newsletter/subscribe', { email }),
+    unsubscribe: (email: string) => api.post('/newsletter/unsubscribe', { email }),
+    getSubscribers: () => api.get('/newsletter/subscribers'),
+    sendNewsletter: (data: { subject: string; content: string }) =>
+      api.post('/newsletter/send', data),
   },
 };
 
